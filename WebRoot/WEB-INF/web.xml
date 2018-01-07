@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>ShopWarehouse</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- servlet -->
+	<servlet>
+		<servlet-name>RegisterClServlet</servlet-name>
+		<servlet-class>servlet.RegisterClServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GoodClServlet</servlet-name>
+		<servlet-class>servlet.GoodClServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UserClServlet</servlet-name>
+		<servlet-class>servlet.UserClServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderClServlet</servlet-name>
+		<servlet-class>servlet.OrderClServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginClServlet</servlet-name>
+		<servlet-class>servlet.LoginClServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogoutClServlet</servlet-name>
+		<servlet-class>servlet.LogoutClServlet</servlet-class>
+	</servlet>
+		
+	<!-- servlet-mapping -->
+	<servlet-mapping>
+		<servlet-name>RegisterClServlet</servlet-name>
+		<url-pattern>/servlet/RegisterClServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GoodClServlet</servlet-name>
+		<url-pattern>/servlet/GoodClServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserClServlet</servlet-name>
+		<url-pattern>/servlet/UserClServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginClServlet</servlet-name>
+		<url-pattern>/servlet/LoginClServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderClServlet</servlet-name>
+		<url-pattern>/servlet/OrderClServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutClServlet</servlet-name>
+		<url-pattern>/servlet/LogoutClServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
