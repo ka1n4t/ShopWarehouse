@@ -23,7 +23,7 @@ public class OrderBeanCl {
 	public boolean addOrder(String good_name, int quantity, String corp_name, String operator) {
 		boolean flag = false;
 		GoodBeanCl gbc = new GoodBeanCl();
-		String good_id = null;
+		int good_id = 0;
 		String month_time = null;
 		String clock_time = null;
 
@@ -32,11 +32,13 @@ public class OrderBeanCl {
 				//商品不存在，无法添加订单
 				return flag;
 			}
-			ArrayList<String> good_id_al = gbc.getGoodIdByName(good_name);
-			for(int i=0; i<good_id_al.size(); i++) {
+			//ArrayList<String> good_id_al = gbc.getGoodIdByRealName(good_name);
+			good_id = gbc.getGoodIdByRealName(good_name);
+			/*for(int i=0; i<good_id_al.size(); i++) {
 				good_id = good_id_al.get(i);
-			}
-			
+			}*/
+			System.out.print("name:"+good_name);
+			System.out.print("good_id:"+good_id);
 			//获得当前时间
 			java.text.SimpleDateFormat formatter1 = new java.text.SimpleDateFormat("yyyy-MM-dd");
 			java.text.SimpleDateFormat formatter2 = new java.text.SimpleDateFormat("HH:mm:ss");
@@ -155,7 +157,7 @@ public class OrderBeanCl {
 		String clock_time = null;
 		try {
 			GoodBeanCl gbc = new GoodBeanCl();
-			sal = gbc.getGoodIdByName(good_name);
+			sal = gbc.getGoodIdByFuzzName(good_name);
 			for(int i=0; i<sal.size(); i++) {
 				good_id = sal.get(i);
 			}
@@ -209,18 +211,25 @@ public class OrderBeanCl {
 		ArrayList<String> sal = null;
 		ArrayList<OrderBean> al = null;
 		ArrayList<OrderBean> result_al = new ArrayList<OrderBean>();
-		String good_id = null;
+		int good_id = 0;
 		try {
 			GoodBeanCl gbc = new GoodBeanCl();
-			sal = gbc.getGoodIdByName(good_name);
-			for(int i=0; i<sal.size(); i++) {
+			//sal = gbc.getGoodIdByRealName(good_name);
+			good_id = gbc.getGoodIdByRealName(good_name);
+			/*for(int i=0; i<sal.size(); i++) {
 				good_id = sal.get(i);
 				al = this.getOrdersByGoodId(Integer.parseInt(good_id));
 				for(int j=0; j<al.size(); j++) {
 					OrderBean ob = al.get(j);
 					result_al.add(ob);
 				}
+			}*/
+			al = this.getOrdersByGoodId(good_id);
+			for(int j=0; j<al.size(); j++) {
+				OrderBean ob = al.get(j);
+				result_al.add(ob);
 			}
+			
 			
 		} catch(Exception ex) {
 			ex.printStackTrace();

@@ -263,11 +263,40 @@ public class GoodBeanCl {
 		return result;
 	}
 	
+	/**通过商品名获得商品id(返回0到多个结果集)
+	 * @param name
+	 * @return int
+	 */
+	public int getGoodIdByRealName(String name) {
+		//ArrayList<String> al = new ArrayList<String>();
+		int id = 0;
+		try {
+			conn = new ConnDB().getConn();
+			statement = conn.createStatement();
+			sql = "select id from goods where name = '"+name+"'";
+			
+			rs = statement.executeQuery(sql);
+			while(rs.next()) {
+				id = rs.getInt(1);
+				//al.add(id);
+			}
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			this.close();
+		}
+		
+		//return al;
+		return id;
+	}
+	
+	
 	/**通过模糊商品名获得商品id(返回0到多个结果集)
 	 * @param name
 	 * @return ArrayList<String>
 	 */
-	public ArrayList<String> getGoodIdByName(String name) {
+	public ArrayList<String> getGoodIdByFuzzName(String name) {
 		ArrayList<String> al = new ArrayList<String>();
 		String id = null;
 		try {
